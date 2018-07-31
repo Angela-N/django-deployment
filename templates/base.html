@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title  %}
+    {% endblock %}
+    <title>Base</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="{% url 'home'%}">Home</a></li>
+        {# index #}
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        {# admin #}
+        <li><a href="{% url 'basic_app:register' %}">Register</a></li>
+        {# register #}
+
+
+        {# basic logic to display login or logout #}
+        {# check to see if user is authenticated #}
+        {% if user.is_authenticated %}
+            <li>
+                <a href="{% url logout %}">Log out</a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{% url login %}">Log in</a>
+            </li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+<div>{% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

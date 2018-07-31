@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+</head>
+<body>
+{% block content %}
+
+<div>{% if registered %}
+    <h1>Thankyou for registering</h1>
+{% else %}
+    <h2>Register Here</h2>
+    <h3>Simply fill ou the form</h3>
+    <form action="" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="" value="Register">
+    </form>
+{% endif %}
+</div>
+{% endblock %}
+</body>
+</html>
